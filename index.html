@@ -7,6 +7,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  emailjs.init({
+    publicKey: "M29pVofvDMjU7vO_B"
+  });
+</script>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     :root {
@@ -408,6 +414,25 @@
       }
 
       errorMessage.style.display = "none";
+
+// Send Nigarish's answer to your email
+emailjs.send("service_fmsvy2b", "template_jov34or", {
+  name: "Nigarish",
+  time: new Date().toLocaleString(),
+  message: answer,
+  email: "Not provided"
+})
+.then(function(response) {
+  console.log("Email sent successfully!", response.status);
+})
+.catch(function(error) {
+  console.error("Email sending failed:", error);
+});
+
+// Continue the birthday website
+startMusic();
+showScreen("countdownScreen");
+startCountdown();
       startMusic();
       showScreen("countdownScreen");
       startCountdown();
