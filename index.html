@@ -1,521 +1,191 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A Little Surprise for Nigarish ♡</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin:0; padding:0; box-sizing:border-box; }
     :root {
-      --pink: #e99aaa;
-      --dark-pink: #c96f88;
-      --light-pink: #fff0f3;
-      --rose: #b77b82;
-      --gold: #c9a46a;
-      --white: #fffdfd;
-      --text: #654650;
+      --pink:#e99aaa; --dark-pink:#c96f88; --light-pink:#fff0f3;
+      --rose:#b77b82; --gold:#c9a46a; --white:#fffdfd; --text:#654650;
     }
-
     body {
-      min-height: 100vh;
-      font-family: "DM Sans", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 15% 20%, #ffe1e8 0, transparent 30%),
-        radial-gradient(circle at 85% 80%, #f9dce5 0, transparent 32%),
-        linear-gradient(135deg, #fff9fa, #fff0f3);
-      overflow-x: hidden;
+      min-height:100vh; font-family:"DM Sans",sans-serif; color:var(--text);
+      background:radial-gradient(circle at 15% 20%,#ffe1e8 0,transparent 30%),
+      radial-gradient(circle at 85% 80%,#f9dce5 0,transparent 32%),
+      linear-gradient(135deg,#fff9fa,#fff0f3); overflow-x:hidden;
     }
-
-    button, input {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
+    button,input { font:inherit; } button { cursor:pointer; }
     .screen {
-      display: none;
-      min-height: 100vh;
-      width: 100%;
-      padding: 35px 20px;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      display:none; min-height:100vh; width:100%; padding:35px 20px;
+      align-items:center; justify-content:center; text-align:center;
+      position:relative; overflow:hidden;
     }
-
-    .screen.active {
-      display: flex;
-      animation: fadeIn 0.8s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .content {
-      width: 100%;
-      max-width: 850px;
-      margin: auto;
-      position: relative;
-      z-index: 2;
-    }
-
-    .eyebrow {
-      color: var(--dark-pink);
-      font-size: 12px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 22px;
-    }
-
-    h1, h2, h3 {
-      font-family: "Playfair Display", serif;
-      font-weight: 500;
-    }
-
-    h1 {
-      font-size: clamp(42px, 8vw, 76px);
-      line-height: 1.15;
-      color: #9e536b;
-      margin-bottom: 22px;
-    }
-
-    h2 {
-      font-size: clamp(32px, 6vw, 49px);
-      color: #a65e75;
-      margin-bottom: 18px;
-    }
-
-    p {
-      font-size: 16px;
-      line-height: 1.8;
-    }
-
-    .subtitle {
-      max-width: 570px;
-      margin: 0 auto 28px;
-      color: #87636d;
-    }
-
-    .heart {
-      color: #df8198;
-    }
-
-    .decorative-heart {
-      font-size: 35px;
-      color: #d98299;
-      margin-bottom: 20px;
-      animation: heartbeat 1.8s infinite;
-    }
-
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.16); }
-    }
-
+    .screen.active { display:flex; animation:fadeIn .8s ease; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+    .content { width:100%; max-width:850px; margin:auto; position:relative; z-index:2; }
+    .eyebrow { color:var(--dark-pink); font-size:12px; letter-spacing:3px; text-transform:uppercase; margin-bottom:22px; }
+    h1,h2,h3 { font-family:"Playfair Display",serif; font-weight:500; }
+    h1 { font-size:clamp(42px,8vw,76px); line-height:1.15; color:#9e536b; margin-bottom:22px; }
+    h2 { font-size:clamp(32px,6vw,49px); color:#a65e75; margin-bottom:18px; }
+    p { font-size:16px; line-height:1.8; }
+    .subtitle { max-width:570px; margin:0 auto 28px; color:#87636d; }
+    .heart { color:#df8198; }
+    .decorative-heart { font-size:35px; color:#d98299; margin-bottom:20px; animation:heartbeat 1.8s infinite; }
+    @keyframes heartbeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.16)} }
     .btn {
-      display: inline-block;
-      border: none;
-      padding: 14px 30px;
-      border-radius: 40px;
-      background: linear-gradient(135deg, #e9a1b2, #c96f88);
-      color: white;
-      font-weight: 600;
-      box-shadow: 0 8px 22px #d98da344;
-      transition: 0.25s;
-      margin: 8px;
+      display:inline-block; border:none; padding:14px 30px; border-radius:40px;
+      background:linear-gradient(135deg,#e9a1b2,#c96f88); color:white;
+      font-weight:600; box-shadow:0 8px 22px #d98da344; transition:.25s; margin:8px;
     }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 25px #d98da366;
-    }
-
-    .btn.secondary {
-      background: white;
-      color: #b96880;
-      border: 1px solid #f1c7d1;
-      box-shadow: none;
-    }
-
-    .small-note {
-      font-size: 13px;
-      color: #a77d87;
-      margin-top: 18px;
-    }
-
+    .btn:hover { transform:translateY(-3px); box-shadow:0 12px 25px #d98da366; }
+    .btn.secondary { background:white; color:#b96880; border:1px solid #f1c7d1; box-shadow:none; }
+    .small-note { font-size:13px; color:#a77d87; margin-top:18px; }
     .glass-card {
-      background: #ffffffb8;
-      border: 1px solid #ffffff;
-      border-radius: 25px;
-      padding: 35px 25px;
-      box-shadow: 0 15px 50px #b56c7d18;
-      backdrop-filter: blur(12px);
+      background:#ffffffb8; border:1px solid white; border-radius:25px;
+      padding:35px 25px; box-shadow:0 15px 50px #b56c7d18; backdrop-filter:blur(12px);
     }
-
-    /* Welcome */
-
-    .welcome-title {
-      font-style: italic;
-    }
-
+    .welcome-title { font-style:italic; }
     .welcome-line {
-      color: #b87987;
-      font-family: "Playfair Display", serif;
-      font-size: clamp(18px, 3vw, 23px);
-      font-style: italic;
-      margin: 10px auto 25px;
+      color:#b87987; font-family:"Playfair Display",serif;
+      font-size:clamp(18px,3vw,23px); font-style:italic; margin:10px auto 25px;
     }
-
-    .welcome-decoration {
-      font-size: 65px;
-      margin-bottom: 15px;
-    }
-
-    /* Question */
-
+    .welcome-decoration { font-size:65px; margin-bottom:15px; }
     .question-input {
-      width: 100%;
-      max-width: 520px;
-      padding: 16px 20px;
-      margin: 25px auto 15px;
-      display: block;
-      border-radius: 15px;
-      border: 1px solid #edc3ce;
-      background: #fffafa;
-      outline: none;
-      color: var(--text);
-      font-size: 15px;
+      width:100%; max-width:520px; padding:16px 20px; margin:25px auto 15px;
+      display:block; border-radius:15px; border:1px solid #edc3ce;
+      background:#fffafa; outline:none; color:var(--text); font-size:15px;
     }
-
-    .question-input:focus {
-      border-color: #d98ba0;
-      box-shadow: 0 0 0 4px #e99aaa22;
-    }
-
-    /* Countdown */
-
-    .countdown-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 13px;
-      max-width: 600px;
-      margin: 35px auto;
-    }
-
-    .time-box {
-      background: #ffffffc9;
-      border: 1px solid white;
-      border-radius: 20px;
-      padding: 22px 8px;
-      box-shadow: 0 10px 25px #bd7a8715;
-    }
-
-    .time-number {
-      display: block;
-      font-family: "Playfair Display", serif;
-      font-size: clamp(30px, 6vw, 48px);
-      color: #b96880;
-    }
-
-    .time-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: #a17b84;
-    }
-
-    /* Music control */
-
+    .question-input:focus { border-color:#d98ba0; box-shadow:0 0 0 4px #e99aaa22; }
+    .countdown-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:13px; max-width:600px; margin:35px auto; }
+    .time-box { background:#ffffffc9; border:1px solid white; border-radius:20px; padding:22px 8px; box-shadow:0 10px 25px #bd7a8715; }
+    .time-number { display:block; font-family:"Playfair Display",serif; font-size:clamp(30px,6vw,48px); color:#b96880; }
+    .time-label { font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:#a17b84; }
     .music-control {
-      position: fixed;
-      top: 18px;
-      right: 18px;
-      z-index: 20;
-      background: #ffffffed;
-      border: 1px solid #f0d4db;
-      border-radius: 30px;
-      padding: 10px 16px;
-      color: #a65e75;
-      box-shadow: 0 5px 20px #9e536b18;
-      display: none;
+      position:fixed; top:18px; right:18px; z-index:20; background:#ffffffed;
+      border:1px solid #f0d4db; border-radius:30px; padding:10px 16px;
+      color:#a65e75; box-shadow:0 5px 20px #9e536b18; display:none;
     }
-
-    .music-control.visible {
-      display: block;
-    }
-
-    /* Single birthday photo card */
-
+    .music-control.visible { display:block; }
     .birthday-card {
-      width: 100%;
-      max-width: 390px;
-      margin: 30px auto;
-      padding: 17px 17px 25px;
-      background: #fffdfd;
-      border: 1px solid #f4d9df;
-      border-radius: 10px;
-      box-shadow: 0 15px 40px #b56c7d25;
-      position: relative;
-      transform: rotate(-1deg);
-      transition: transform 0.3s ease;
+      width:100%; max-width:390px; margin:30px auto; padding:17px 17px 25px;
+      background:#fffdfd; border:1px solid #f4d9df; border-radius:10px;
+      box-shadow:0 15px 40px #b56c7d25; position:relative;
+      transform:rotate(-1deg); transition:transform .3s ease;
     }
-
-    .birthday-card:hover {
-      transform: rotate(0deg) translateY(-5px);
-    }
-
+    .birthday-card:hover { transform:rotate(0deg) translateY(-5px); }
     .birthday-card::before {
-      content: "♡";
-      position: absolute;
-      top: -18px;
-      right: -12px;
-      font-size: 42px;
-      color: #d98299;
-      z-index: 2;
+      content:"♡"; position:absolute; top:-18px; right:-12px;
+      font-size:42px; color:#d98299; z-index:2;
     }
 
-    .birthday-photo {
-      width: 100%;
-      height: 390px;
-      object-fit: cover;
-      display: block;
-      border: 1px solid #f5e1e5;
-      border-radius: 5px;
-      background: #f8dfe5;
+    /* Nine photos displayed together in one frame */
+    .photo-grid {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:5px;
+      width:100%;
+      padding:5px;
+      background:#fff0f3;
+      border:1px solid #f5e1e5;
+      border-radius:5px;
+    }
+    .photo-grid img {
+      width:100%;
+      aspect-ratio:1 / 1;
+      object-fit:cover;
+      display:block;
+      border-radius:4px;
+      background:#f8dfe5;
     }
 
     .birthday-card-caption {
-      font-family: "Playfair Display", serif;
-      color: #a65e75;
-      font-size: 25px;
-      font-style: italic;
-      margin-top: 18px;
+      font-family:"Playfair Display",serif; color:#a65e75; font-size:25px;
+      font-style:italic; margin-top:18px;
     }
-
-    .birthday-card-subtitle {
-      color: #ad8490;
-      font-size: 13px;
-      margin-top: 6px;
-      letter-spacing: 1px;
-    }
-
-    /* Cake */
-
-    .cake-area {
-      margin: 35px auto 20px;
-      position: relative;
-      width: 220px;
-      height: 190px;
-    }
-
+    .birthday-card-subtitle { color:#ad8490; font-size:13px; margin-top:6px; letter-spacing:1px; }
+    .cake-area { margin:35px auto 20px; position:relative; width:220px; height:190px; }
     .cake {
-      position: absolute;
-      width: 170px;
-      height: 95px;
-      bottom: 10px;
-      left: 25px;
-      border-radius: 12px 12px 20px 20px;
-      background: linear-gradient(135deg, #f4b7c5, #dc8da3);
-      box-shadow: 0 12px 20px #b56c7d30;
+      position:absolute; width:170px; height:95px; bottom:10px; left:25px;
+      border-radius:12px 12px 20px 20px;
+      background:linear-gradient(135deg,#f4b7c5,#dc8da3); box-shadow:0 12px 20px #b56c7d30;
     }
-
     .cake::before {
-      content: "";
-      position: absolute;
-      height: 24px;
-      width: 100%;
-      top: -10px;
-      left: 0;
-      border-radius: 50%;
-      background: #fff0f3;
+      content:""; position:absolute; height:24px; width:100%; top:-10px; left:0;
+      border-radius:50%; background:#fff0f3;
     }
-
     .cake::after {
-      content: "♡  ♡  ♡";
-      position: absolute;
-      width: 100%;
-      text-align: center;
-      top: 35px;
-      color: white;
-      font-size: 21px;
+      content:"♡  ♡  ♡"; position:absolute; width:100%; text-align:center;
+      top:35px; color:white; font-size:21px;
     }
-
     .candle {
-      position: absolute;
-      height: 52px;
-      width: 12px;
-      left: 104px;
-      top: 35px;
-      background: repeating-linear-gradient(
-        45deg, white, white 5px, #e99aaa 5px, #e99aaa 10px
-      );
-      border-radius: 4px;
-      z-index: 2;
+      position:absolute; height:52px; width:12px; left:104px; top:35px;
+      background:repeating-linear-gradient(45deg,white,white 5px,#e99aaa 5px,#e99aaa 10px);
+      border-radius:4px; z-index:2;
     }
-
     .flame {
-      position: absolute;
-      width: 17px;
-      height: 25px;
-      background: radial-gradient(ellipse at center, #fff4a8 0%, #ffb347 55%, #f47b46 100%);
-      border-radius: 50% 50% 45% 45%;
-      left: 101px;
-      top: 8px;
-      transform: rotate(5deg);
-      animation: flicker 0.7s infinite alternate;
-      z-index: 3;
+      position:absolute; width:17px; height:25px;
+      background:radial-gradient(ellipse at center,#fff4a8 0%,#ffb347 55%,#f47b46 100%);
+      border-radius:50% 50% 45% 45%; left:101px; top:8px;
+      transform:rotate(5deg); animation:flicker .7s infinite alternate; z-index:3;
     }
-
-    .flame.out {
-      display: none;
-    }
-
-    @keyframes flicker {
-      from { transform: rotate(-7deg) scale(1); }
-      to { transform: rotate(7deg) scale(1.12); }
-    }
-
-    /* Letter */
-
+    .flame.out { display:none; }
+    @keyframes flicker { from{transform:rotate(-7deg) scale(1)} to{transform:rotate(7deg) scale(1.12)} }
     .letter {
-      max-width: 650px;
-      margin: 25px auto;
-      padding: 35px;
-      background: #fffdfd;
-      border: 1px solid #f5d8df;
-      border-radius: 18px;
-      box-shadow: 0 12px 35px #b56c7d15;
-      text-align: left;
+      max-width:650px; margin:25px auto; padding:35px; background:#fffdfd;
+      border:1px solid #f5d8df; border-radius:18px;
+      box-shadow:0 12px 35px #b56c7d15; text-align:left;
     }
-
-    .letter p {
-      margin-bottom: 16px;
-      color: #79545e;
-    }
-
+    .letter p { margin-bottom:16px; color:#79545e; }
     .signature {
-      font-family: "Playfair Display", serif;
-      color: #b96880;
-      font-size: 24px;
-      font-style: italic;
-      text-align: right;
+      font-family:"Playfair Display",serif; color:#b96880;
+      font-size:24px; font-style:italic; text-align:right;
     }
-
-    /* Confetti */
-
     .confetti {
-      position: fixed;
-      top: -15px;
-      width: 9px;
-      height: 13px;
-      z-index: 50;
-      pointer-events: none;
-      animation: fall linear forwards;
+      position:fixed; top:-15px; width:9px; height:13px;
+      z-index:50; pointer-events:none; animation:fall linear forwards;
     }
-
-    @keyframes fall {
-      to {
-        transform: translateY(110vh) rotate(720deg);
-        opacity: 0;
-      }
-    }
-
-    .final-heart {
-      font-size: 75px;
-      margin: 20px 0;
-      animation: heartbeat 1.5s infinite;
-    }
-
-    @media (max-width: 600px) {
-      .screen {
-        padding: 75px 17px 35px;
-      }
-
-      .countdown-grid {
-        gap: 7px;
-      }
-
-      .time-box {
-        padding: 17px 5px;
-      }
-
-      .time-label {
-        font-size: 9px;
-      }
-
-      .glass-card {
-        padding: 27px 18px;
-      }
-
-      .letter {
-        padding: 24px 20px;
-      }
-
-      .birthday-card {
-        max-width: 310px;
-      }
-
-      .birthday-photo {
-        height: 330px;
-      }
+    @keyframes fall { to{transform:translateY(110vh) rotate(720deg);opacity:0} }
+    .final-heart { font-size:75px; margin:20px 0; animation:heartbeat 1.5s infinite; }
+    @media(max-width:600px) {
+      .screen { padding:75px 17px 35px; }
+      .countdown-grid { gap:7px; }
+      .time-box { padding:17px 5px; }
+      .time-label { font-size:9px; }
+      .glass-card { padding:27px 18px; }
+      .letter { padding:24px 20px; }
+      .birthday-card { max-width:310px; }
+      .photo-grid { gap:4px; }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- Background music -->
+  <!-- Background music: keep this file in assets/music/ -->
   <audio id="birthdayMusic" loop preload="auto">
-    <source src="assets/music/birthday-music.mp3" type="audio/mpeg">
+    <source src="./assets/music/birthday-music.mp3" type="audio/mpeg">
   </audio>
 
-  <button class="music-control" id="musicControl" onclick="toggleMusic()">
-    ♫ Pause Music
-  </button>
+  <button class="music-control" id="musicControl" onclick="toggleMusic()">♫ Play Music</button>
 
   <!-- SCREEN 1: WELCOME -->
   <section class="screen active" id="welcomeScreen">
     <div class="content">
       <div class="welcome-decoration">🎀</div>
       <div class="eyebrow">A special surprise awaits</div>
-
-      <h1 class="welcome-title">
-        Hey, Nigarish!
-      </h1>
-
-      <div class="welcome-line">
-        A little world created just for you ♡
-      </div>
-
+      <h1 class="welcome-title">Hey, Nigarish!</h1>
+      <div class="welcome-line">A little world created just for you ♡</div>
       <p class="subtitle">
         Someone special deserves something special.
         So, I made a little surprise filled with love,
         memories, and happiness.
       </p>
-
       <div class="decorative-heart">♡</div>
-
-      <button class="btn" onclick="showScreen('questionScreen')">
-        Let's Begin ♡
-      </button>
-
+      <button class="btn" onclick="showScreen('questionScreen')">Let's Begin ♡</button>
       <p class="small-note">Made with love, just for you.</p>
     </div>
   </section>
@@ -525,33 +195,15 @@
     <div class="content">
       <div class="glass-card">
         <div class="eyebrow">Before we begin...</div>
-
         <h2>A little question for you ♡</h2>
-
-        <p class="subtitle">
-          What is one thing that makes our friendship
-          special to you?
-        </p>
-
-        <input
-          class="question-input"
-          id="friendshipAnswer"
-          type="text"
-          placeholder="Write anything from your heart..."
-          autocomplete="off"
-        >
-
-        <p id="answerError" style="color:#c45f78; display:none; font-size:13px;">
+        <p class="subtitle">What is one thing that makes our friendship special to you?</p>
+        <input class="question-input" id="friendshipAnswer" type="text"
+          placeholder="Write anything from your heart..." autocomplete="off">
+        <p id="answerError" style="color:#c45f78;display:none;font-size:13px;">
           Please write something before continuing ♡
         </p>
-
-        <button class="btn" onclick="submitAnswer()">
-          Submit My Answer ♡
-        </button>
-
-        <p class="small-note">
-          There is no right or wrong answer.
-        </p>
+        <button class="btn" onclick="submitAnswer()">Submit My Answer ♡</button>
+        <p class="small-note">There is no right or wrong answer.</p>
       </div>
     </div>
   </section>
@@ -560,45 +212,17 @@
   <section class="screen" id="countdownScreen">
     <div class="content">
       <div class="decorative-heart">♡</div>
-
       <div class="eyebrow">The special day is almost here</div>
-
       <h2>Something beautiful is waiting...</h2>
-
-      <p class="subtitle">
-        A little countdown before your special moment.
-        Get ready, birthday girl!
-      </p>
-
+      <p class="subtitle">A little countdown before your special moment. Get ready, birthday girl!</p>
       <div class="countdown-grid">
-        <div class="time-box">
-          <span class="time-number" id="days">00</span>
-          <span class="time-label">Days</span>
-        </div>
-
-        <div class="time-box">
-          <span class="time-number" id="hours">00</span>
-          <span class="time-label">Hours</span>
-        </div>
-
-        <div class="time-box">
-          <span class="time-number" id="minutes">00</span>
-          <span class="time-label">Minutes</span>
-        </div>
-
-        <div class="time-box">
-          <span class="time-number" id="seconds">00</span>
-          <span class="time-label">Seconds</span>
-        </div>
+        <div class="time-box"><span class="time-number" id="days">00</span><span class="time-label">Days</span></div>
+        <div class="time-box"><span class="time-number" id="hours">00</span><span class="time-label">Hours</span></div>
+        <div class="time-box"><span class="time-number" id="minutes">00</span><span class="time-label">Minutes</span></div>
+        <div class="time-box"><span class="time-number" id="seconds">00</span><span class="time-label">Seconds</span></div>
       </div>
-
-      <p class="small-note">
-        November 3, 2026 · 12:00 AM
-      </p>
-
-      <button class="btn" onclick="skipCountdown()">
-        Continue to surprise ♡
-      </button>
+      <p class="small-note">November 3, 2026 · 12:00 AM</p>
+      <button class="btn" onclick="skipCountdown()">Continue to surprise ♡</button>
     </div>
   </section>
 
@@ -606,58 +230,42 @@
   <section class="screen" id="birthdayScreen">
     <div class="content">
       <div class="welcome-decoration">🎂</div>
-
       <div class="eyebrow">Today is all about you</div>
-
       <h1>Happy Birthday,<br>Nigarish! ♡</h1>
-
       <p class="subtitle">
         May your life always be filled with love,
         laughter, beautiful memories, and endless happiness.
         You deserve all the wonderful things in this world.
       </p>
-
-      <button class="btn" onclick="showScreen('memoriesScreen')">
-        See Your Birthday Card ♡
-      </button>
+      <button class="btn" onclick="showScreen('memoriesScreen')">See Your Birthday Card ♡</button>
     </div>
   </section>
 
-  <!-- SCREEN 5: SINGLE PHOTO BIRTHDAY CARD -->
+  <!-- SCREEN 5: BIRTHDAY CARD WITH ALL NINE PHOTOS -->
   <section class="screen" id="memoriesScreen">
     <div class="content">
       <div class="eyebrow">Made especially for you</div>
-
       <h2>A Beautiful Birthday Card ♡</h2>
-
-      <p class="subtitle">
-        A little frame for someone who deserves
-        all the happiness in the world.
-      </p>
-
+      <p class="subtitle">A little frame for someone who deserves all the happiness in the world.</p>
       <div class="birthday-card">
-        <img
-          class="birthday-photo"
-          src="assets/photos/photo1.jpg"
-          alt="Nigarish birthday picture"
-        >
+        <div class="photo-grid">
+          <img src="./assets/photos/photo1.jpg" alt="Photo 1">
+          <img src="./assets/photos/photo2.jpg" alt="Photo 2">
+          <img src="./assets/photos/photo3.jpg" alt="Photo 3">
 
-        <div class="birthday-card-caption">
-          Happy Birthday, Beautiful!
-        </div>
+          <img src="./assets/photos/photo4.jpg" alt="Photo 4">
+          <img src="./assets/photos/photo5.jpg" alt="Photo 5">
+          <img src="./assets/photos/photo6.jpg" alt="Photo 6">
 
-        <div class="birthday-card-subtitle">
-          WITH LOVE, JUST FOR YOU ♡
+          <img src="./assets/photos/photo7.jpg" alt="Photo 7">
+          <img src="./assets/photos/photo8.jpg" alt="Photo 8">
+          <img src="./assets/photos/photo9.jpg" alt="Photo 9">
         </div>
+        <div class="birthday-card-caption">Happy Birthday, Beautiful!</div>
+        <div class="birthday-card-subtitle">WITH LOVE, JUST FOR YOU ♡</div>
       </div>
-
-      <p class="small-note">
-        Keep shining and smiling, always. ♡
-      </p>
-
-      <button class="btn" onclick="showScreen('cakeScreen')">
-        One More Surprise ♡
-      </button>
+      <p class="small-note">Keep shining and smiling, always. ♡</p>
+      <button class="btn" onclick="showScreen('cakeScreen')">One More Surprise ♡</button>
     </div>
   </section>
 
@@ -665,33 +273,16 @@
   <section class="screen" id="cakeScreen">
     <div class="content">
       <div class="eyebrow">Make a birthday wish</div>
-
       <h2>Your Special Cake 🎂</h2>
-
-      <p class="subtitle">
-        Close your eyes, make a beautiful wish,
-        and blow out your candle!
-      </p>
-
+      <p class="subtitle">Close your eyes, make a beautiful wish, and blow out your candle!</p>
       <div class="cake-area">
         <div class="flame" id="candleFlame"></div>
         <div class="candle"></div>
         <div class="cake"></div>
       </div>
-
-      <p id="cakeMessage" class="subtitle">
-        Your wish is waiting to come true. ♡
-      </p>
-
-      <button class="btn" id="blowButton" onclick="blowCandle()">
-        Blow the Candle ♡
-      </button>
-
-      <div>
-        <button class="btn secondary" onclick="showScreen('letterScreen')">
-          Read Your Letter
-        </button>
-      </div>
+      <p id="cakeMessage" class="subtitle">Your wish is waiting to come true. ♡</p>
+      <button class="btn" id="blowButton" onclick="blowCandle()">Blow the Candle ♡</button>
+      <div><button class="btn secondary" onclick="showScreen('letterScreen')">Read Your Letter</button></div>
     </div>
   </section>
 
@@ -699,50 +290,37 @@
   <section class="screen" id="letterScreen">
     <div class="content">
       <div class="eyebrow">A message from my heart</div>
-
       <h2>A Little Letter for You ♡</h2>
-
       <div class="letter">
         <p>Dear Nigarish,</p>
-
         <p>
           First of all, a very Happy Birthday to you!
           I hope this new chapter of your life brings you
           countless reasons to smile.
         </p>
-
         <p>
           Some people make ordinary moments feel special,
           and some friendships become beautiful parts
           of our lives. I am grateful for the memories,
           laughter, and moments we have shared.
         </p>
-
         <p>
           May you always find happiness in little things,
           strength in difficult times, and success in
           everything you work towards.
         </p>
-
         <p>
           Never stop smiling, never stop dreaming,
           and always remember how special you are.
         </p>
-
         <p>
           May this birthday be the beginning of a year
           full of beautiful surprises and unforgettable
           memories.
         </p>
-
-        <p class="signature">
-          With lots of love ♡
-        </p>
+        <p class="signature">With lots of love ♡</p>
       </div>
-
-      <button class="btn" onclick="showScreen('finalScreen')">
-        One Last Thing ♡
-      </button>
+      <button class="btn" onclick="showScreen('finalScreen')">One Last Thing ♡</button>
     </div>
   </section>
 
@@ -750,28 +328,16 @@
   <section class="screen" id="finalScreen">
     <div class="content">
       <div class="final-heart">💗</div>
-
       <div class="eyebrow">A special day for a special person</div>
-
       <h1>Keep Smiling,<br>Birthday Girl!</h1>
-
       <p class="subtitle">
         I hope this little surprise brought a smile
         to your face. You deserve happiness today
         and every day.
       </p>
-
-      <h2 style="font-size:30px; margin-top:25px;">
-        Happy Birthday, Nigarish! ♡
-      </h2>
-
-      <p class="small-note">
-        A little world created just for you ♡
-      </p>
-
-      <button class="btn" onclick="celebrateAgain()">
-        Celebrate Again 🎉
-      </button>
+      <h2 style="font-size:30px;margin-top:25px;">Happy Birthday, Nigarish! ♡</h2>
+      <p class="small-note">A little world created just for you ♡</p>
+      <button class="btn" onclick="celebrateAgain()">Celebrate Again 🎉</button>
     </div>
   </section>
 
@@ -790,50 +356,39 @@
       document.querySelectorAll(".screen").forEach(screen => {
         screen.classList.remove("active");
       });
-
       document.getElementById(screenId).classList.add("active");
 
       if (screenId === "birthdayScreen" || screenId === "finalScreen") {
         createConfetti();
       }
-
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     // Start music after the visitor submits her answer.
     function startMusic() {
-      if (musicStarted) return;
-
       music.volume = 0.7;
+      musicControl.classList.add("visible");
 
-      const playPromise = music.play();
-
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
-            musicStarted = true;
-            musicControl.classList.add("visible");
-            musicControl.textContent = "♫ Pause Music";
-          })
-          .catch(error => {
-            console.log("Autoplay was blocked by the browser:", error);
-            musicControl.classList.add("visible");
-            musicControl.textContent = "♫ Play Music";
-          });
-      }
+      music.play().then(() => {
+        musicStarted = true;
+        musicControl.textContent = "♫ Pause Music";
+      }).catch(error => {
+        // Browsers may block automatic playback; the visible button lets her start it.
+        console.log("Music playback needs a manual click:", error);
+        musicControl.textContent = "♫ Play Music";
+      });
     }
 
     // Play or pause the background music.
     function toggleMusic() {
       if (music.paused) {
-        music.play()
-          .then(() => {
-            musicStarted = true;
-            musicControl.textContent = "♫ Pause Music";
-          })
-          .catch(error => {
-            console.log("Music could not be played:", error);
-          });
+        music.play().then(() => {
+          musicStarted = true;
+          musicControl.textContent = "♫ Pause Music";
+        }).catch(error => {
+          console.log("Music could not be played:", error);
+          musicControl.textContent = "♫ Play Music";
+        });
       } else {
         music.pause();
         musicControl.textContent = "♫ Play Music";
@@ -844,7 +399,6 @@
     function submitAnswer() {
       const answerInput = document.getElementById("friendshipAnswer");
       const errorMessage = document.getElementById("answerError");
-
       const answer = answerInput.value.trim();
 
       if (answer.length === 0) {
@@ -854,21 +408,14 @@
       }
 
       errorMessage.style.display = "none";
-
-      // Music starts directly after the answer is submitted.
       startMusic();
-
-      // Show the countdown after submitting the answer.
       showScreen("countdownScreen");
-
       startCountdown();
     }
 
     // Countdown timer.
     function startCountdown() {
-      if (countdownInterval) {
-        clearInterval(countdownInterval);
-      }
+      if (countdownInterval) clearInterval(countdownInterval);
 
       function updateCountdown() {
         const now = new Date();
@@ -879,33 +426,19 @@
           document.getElementById("hours").textContent = "00";
           document.getElementById("minutes").textContent = "00";
           document.getElementById("seconds").textContent = "00";
-
           clearInterval(countdownInterval);
           return;
         }
 
         const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutes = Math.floor(
-          (difference % (1000 * 60 * 60)) / (1000 * 60)
-        );
-        const seconds = Math.floor(
-          (difference % (1000 * 60)) / 1000
-        );
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-        document.getElementById("days").textContent =
-          String(days).padStart(2, "0");
-
-        document.getElementById("hours").textContent =
-          String(hours).padStart(2, "0");
-
-        document.getElementById("minutes").textContent =
-          String(minutes).padStart(2, "0");
-
-        document.getElementById("seconds").textContent =
-          String(seconds).padStart(2, "0");
+        document.getElementById("days").textContent = String(days).padStart(2, "0");
+        document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+        document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+        document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
       }
 
       updateCountdown();
@@ -914,10 +447,7 @@
 
     // Skip the countdown and open the birthday surprise.
     function skipCountdown() {
-      if (countdownInterval) {
-        clearInterval(countdownInterval);
-      }
-
+      if (countdownInterval) clearInterval(countdownInterval);
       showScreen("birthdayScreen");
     }
 
@@ -928,14 +458,10 @@
       const button = document.getElementById("blowButton");
 
       flame.classList.add("out");
-
-      message.textContent =
-        "Your wish has been sent to the universe! May it come true. ♡";
-
+      message.textContent = "Your wish has been sent to the universe! May it come true. ♡";
       button.textContent = "Wish Made! ♡";
       button.disabled = true;
       button.style.opacity = "0.65";
-
       createConfetti();
     }
 
@@ -945,29 +471,15 @@
 
       for (let i = 0; i < 45; i++) {
         const piece = document.createElement("div");
-
         piece.className = "confetti";
-        piece.textContent =
-          symbols[Math.floor(Math.random() * symbols.length)];
-
+        piece.textContent = symbols[Math.floor(Math.random() * symbols.length)];
         piece.style.left = Math.random() * 100 + "vw";
-        piece.style.color = [
-          "#e99aaa",
-          "#c9a46a",
-          "#d98299",
-          "#f3bfd0",
-          "#ffffff"
-        ][Math.floor(Math.random() * 5)];
-
+        piece.style.color = ["#e99aaa", "#c9a46a", "#d98299", "#f3bfd0", "#ffffff"][Math.floor(Math.random() * 5)];
         piece.style.fontSize = (12 + Math.random() * 16) + "px";
         piece.style.animationDuration = (3 + Math.random() * 4) + "s";
         piece.style.opacity = Math.random() * 0.8 + 0.2;
-
         document.body.appendChild(piece);
-
-        setTimeout(() => {
-          piece.remove();
-        }, 7500);
+        setTimeout(() => piece.remove(), 7500);
       }
     }
 
@@ -978,15 +490,9 @@
     }
 
     // Allow Enter key to submit the answer.
-    document.getElementById("friendshipAnswer").addEventListener(
-      "keydown",
-      function(event) {
-        if (event.key === "Enter") {
-          submitAnswer();
-        }
-      }
-    );
+    document.getElementById("friendshipAnswer").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") submitAnswer();
+    });
   </script>
-
 </body>
 </html>
